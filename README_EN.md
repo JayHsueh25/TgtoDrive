@@ -86,7 +86,7 @@ This README is written for Docker image users and focuses on features, deploymen
 - Configure blocklists, second-level routing, channel IDs and target folders.
 - Transfer Guangya share links directly, including fallback expansion for share folders that cannot be restored from their root item.
 - Monitor 123 share links for incremental updates.
-- Manage transfer history, logs and organization history from the Web console.
+- Manage transfer history, logs and organization history from the Web console. 
 
 ### Media library organization
 
