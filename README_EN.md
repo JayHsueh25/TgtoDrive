@@ -9,7 +9,7 @@
   <a href="https://hub.docker.com/r/walkingd/tgto123">
     <img src="https://img.shields.io/badge/Docker%20Image-walkingd%2Ftgto123-2496ED?style=for-the-badge&logo=docker" alt="Docker Image">
   </a>
-  <img src="https://img.shields.io/badge/Version-8.3.8-6C63FF?style=for-the-badge" alt="Version">
+  <img src="https://img.shields.io/badge/Version-8.3.9-6C63FF?style=for-the-badge" alt="Version">
   <img src="https://img.shields.io/badge/Arch-amd64%20%7C%20arm64-111827?style=for-the-badge" alt="Architecture">
 </p>
 
@@ -73,7 +73,7 @@ This README is written for Docker image users and focuses on features, deploymen
 | --- | --- |
 | 123 Cloud Drive | Account setup, channel monitoring, share transfer, JSON fast import, offline tasks, STRM generation |
 | 115 Cloud Drive | Cookie / QR login, channel monitoring, organization, STRM, shared STRM, link transfer, offline tasks, cleanup |
-| Guangya Cloud Drive | SMS login token, channel monitoring, share-link transfer, media organization, STRM generation |
+| Guangya Cloud Drive | SMS login token, channel monitoring, share-link transfer, offline tasks, media organization, STRM generation |
 | Tianyi Cloud Drive | Account setup, channel monitoring, link transfer, cleanup |
 | HDHive | OAuth authorization, check-in, channel monitoring, transfer workflow, Tianyi-link handling |
 | Telegram | Channel monitoring, keyword rules, universal forwarding, scheduled sending, bot notifications |
@@ -134,6 +134,7 @@ TgtoDrive can turn transferred files into a cleaner media library for Emby, Jell
 - WeCom notification settings.
 - Server connectivity checks.
 - Local-file fast import to 123 / 115.
+- Multi-protocol offline tasks for 123 / 115 / Guangya.
 - Bilibili / Douyin video download.
 - Community posting settings.
 - 123 cloud-drive API rate-limit toolbox.
@@ -339,7 +340,7 @@ Handles 115 shared links and saves resources to target folders, then passes them
 
 #### Offline Settings
 
-Configures 115 offline-download options for magnet, ed2k and torrent tasks.
+Configures 115 offline-download options for magnet, ed2k and torrent tasks. ED2K and magnet/torrent handling have separate switches.
 
 ![115 Offline Settings](picture/115网盘-离线设置.png)
 
@@ -422,6 +423,10 @@ Configures Guangya resource-channel monitoring for public Telegram channels and 
 Handles Guangya share links and saves shared files or folders into the configured account folder. For shares whose root folder cannot be restored directly, TgtoDrive expands the folder and transfers child files as a fallback.
 
 ![Guangya Link Transfer](picture/光鸭云盘-链接转存.png)
+
+#### Offline Settings
+
+Configures Guangya offline tasks for magnet links, torrents converted to magnet links, and best-effort ED2K submission. ED2K availability depends on the live Guangya cloud-add API; failures are reported separately and do not block 115 submissions.
 
 #### Organizer
 

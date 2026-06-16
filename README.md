@@ -9,7 +9,7 @@
   <a href="https://hub.docker.com/r/walkingd/tgto123">
     <img src="https://img.shields.io/badge/Docker%20Image-walkingd%2Ftgto123-2496ED?style=for-the-badge&logo=docker" alt="Docker Image">
   </a>
-  <img src="https://img.shields.io/badge/Version-8.3.8-6C63FF?style=for-the-badge" alt="Version">
+  <img src="https://img.shields.io/badge/Version-8.3.9-6C63FF?style=for-the-badge" alt="Version">
   <img src="https://img.shields.io/badge/Arch-amd64%20%7C%20arm64-111827?style=for-the-badge" alt="Architecture">
 </p>
 
@@ -128,7 +128,7 @@
   * `/hdhive 关键词`：搜索影巢资源
 * **跨盘秒传**：115 → 123、天翼 → 123 等。
 * **本地文件秒传**：支持 PT 本地文件扫描后尝试秒传至 123 / 115。
-* **多协议离线下载**：Magnet / ed2k / Torrent 自动提交到 123 或 115。
+* **多协议离线下载**：Magnet / ed2k / Torrent 自动提交到 123 / 115 / 光鸭。
 * **短视频下载**：Bilibili / 抖音视频下载。
 
 ### 6. 🧰 管理与运维能力
@@ -151,7 +151,7 @@
 | 系统工具 | Emby 看板、Emby 反代、全局设置、日志中心、监控历史、整理历史、实用工具 |
 | 115 网盘 | 115 账号配置、影巢账号配置、115 频道监控、影巢频道监控、网盘整理、STRM、分享 STRM、链接转存、离线设置、自动清理 |
 | 123 云盘 | 123 账号配置、频道监控、网盘整理、STRM、转存与秒传 JSON、离线设置、跨盘秒传、分享转存监控、分享链接生成 |
-| 光鸭云盘 | 登录与 Token、频道监控、链接转存、网盘整理、STRM |
+| 光鸭云盘 | 登录与 Token、频道监控、链接转存、离线设置、网盘整理、STRM |
 | 天翼云盘 | 天翼账号配置、频道监控、链接转存、自动清理 |
 | 其他功能 | SSH 终端、万能转发与 TG API、Pansou、微信通知、资源社区、本地文件秒传、海报刷新、服务器连通性检测、视频下载 |
 
@@ -358,7 +358,7 @@ docker compose down
 
 #### 离线设置
 
-用于配置 115 离线下载相关参数，支持 magnet、ed2k、torrent 等任务提交后的保存与处理。
+用于配置 115 离线下载相关参数，支持 magnet、ed2k、torrent 等任务提交后的保存与处理。ED2K 与磁力/种子分别有独立开关，可按需只启用其中一种。
 
 ![115 离线设置](picture/115网盘-离线设置.png)
 
@@ -441,6 +441,10 @@ docker compose down
 用于处理光鸭云盘分享链接，将分享内的文件或目录保存到账号内指定位置。对部分顶层目录无法直接转存的分享，会自动进入目录并转存子文件。
 
 ![光鸭云盘链接转存](picture/光鸭云盘-链接转存.png)
+
+#### 离线设置
+
+用于配置光鸭云盘离线任务，支持 magnet、torrent 转 magnet，以及 ED2K 尝试提交。ED2K 是否可用取决于光鸭云添加接口实际支持情况，失败时会返回明确原因且不影响 115 离线提交。
 
 #### 网盘整理功能
 
